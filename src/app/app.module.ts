@@ -1,16 +1,25 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { AppComponent } from "./app.component";
+import { ProfileComponentComponent } from "./profile-component/profile-component.component";
+import { EditComponentComponent } from "./edit-component/edit-component.component";
+import { ProfileServiceService } from "./profile-service.service";
+import { FormsModule } from "@angular/forms";
 
-import { AppComponent } from './app.component';
+const appRoutes: Routes = [
+  { path: "profile", component: ProfileComponentComponent },
+  { path: "edit-profile", component: EditComponentComponent }
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ProfileComponentComponent,
+    EditComponentComponent
   ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
+  imports: [BrowserModule, RouterModule.forRoot(appRoutes), FormsModule],
+  providers: [ProfileServiceService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
